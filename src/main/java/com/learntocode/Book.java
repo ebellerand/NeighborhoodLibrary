@@ -157,33 +157,27 @@ public class Book {
         }
         if (input.equalsIgnoreCase("c")) {
             System.out.println("Please enter the ID of the book you're checking in: ");
-            int input2 = scanner.nextInt();
+            String input2 = scanner.nextLine();
 
 
             boolean bookFound = false;
             for (int i = 0; i < numBooks; i++) {
-                if (input2 == books[i].getId()) {
+                if (Integer.parseInt(input2) == books[i].getId()) {
                     if (!books[i].isCheckedOut()) {
                         System.out.println("Sorry, this book is already checked in.");
                     } else {
-                        Book.checkInBook(input2);
+                        Book.checkInBook(Integer.parseInt(input2));
                         System.out.println("The book " + books[i].getTitle() + " has been checked in by " + books[i].getRenterName());
                     }
                     bookFound = true;
                     break;
-                } else {
+                }
+            }
+            if (!bookFound) {
                     System.out.println("Invalid entry. ");
-                    break;
                 }
             }
         }
     }
-}
 
-
- /*System.out.println("Please confirm your selection by entering your name: ");
-         String rentersName = scanner.nextLine();
-         books[i].setRenterName(rentersName);
-         Book.checkOutBook(Integer.parseInt(input));
-         System.out.println("The book " + books[i].getTitle() + " has been checked out by " + rentersName);*/
 
